@@ -20,6 +20,8 @@ public class VehicleOrder {
     //Snake casing, camel casing
     public static final double FUEL_CELLS_PER_TANK = 12;
 
+    public static final double TAX_RATE = 0.0725; // 7.25%
+
     public VehicleOrder(String firstName, String lastName, String phone,
                         int numberOfVehicles, int numberOfTanksPerVehicle){
 
@@ -39,8 +41,18 @@ public class VehicleOrder {
         return numberOfVehicles * numberOfTanksPerVehicle * FUEL_CELLS_PER_TANK * PRICE_PER_FUEL_CELL;
     }
 
-    public double computeTotalCost(){
+
+
+    public double computeSubTotal() {
         return computeManufacturingCost() + computeFuelTankCost();
+    }
+
+    public double computeTax() {
+        return computeSubTotal() * TAX_RATE;
+    }
+
+    public double computeTotalCost(){
+        return computeSubTotal() + computeTax();
     }
 
     public String getFirstName(){
@@ -68,6 +80,7 @@ public class VehicleOrder {
 
         StringBuilder sb = new StringBuilder();
 
+        sb.append("WELCOME TO HAYLO MANUFACTURING").append("\n");
         sb.append("Customer: ").append(firstName).append(" ").append(lastName).append("\n");
         sb.append("Phone: ").append(phone).append("\n\n");
         sb.append("Number of vehicles: ").append(numberOfVehicles).append("\n");
@@ -75,7 +88,10 @@ public class VehicleOrder {
         sb.append("Fuel cell per tank: ").append(FUEL_CELLS_PER_TANK).append("\n\n");
         sb.append("Manufacturing cost: ").append(cf.format(computeManufacturingCost())).append("\n");
         sb.append("Fuel tank cost: ").append(cf.format(computeFuelTankCost())).append("\n");
-        sb.append("Total cost: ").append(cf.format(computeTotalCost())).append("\n");
+     //   sb.append("Total cost: ").append(cf.format(computeTotalCost())).append("\n");
+        sb.append("Subtotal: ").append(cf.format(computeSubTotal())).append("\n");
+        sb.append("Tax (7.25%): ").append(cf.format(computeTax())).append("\n");
+        sb.append("Total: ").append(cf.format(computeTotalCost())).append("\n");
 
         return sb.toString();
     }
