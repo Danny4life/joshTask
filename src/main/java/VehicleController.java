@@ -18,6 +18,7 @@ public class VehicleController {
 
     public static void main(String[] args) {
 
+       
         String firstName = promptForFirstName();
         String lastName = promptForLastName();
         String phone = promptForPhone();

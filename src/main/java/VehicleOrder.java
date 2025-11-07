@@ -3,7 +3,10 @@ import java.util.Locale;
 
 public class VehicleOrder {
 
-    private String firstName;
+    // + is for public
+    // - is for private
+
+    private String firstName; // Instance field
 
     private String lastName;
 
@@ -14,7 +17,7 @@ public class VehicleOrder {
     private int numberOfTanksPerVehicle;
 
     // Constant values for vehicle calculation
-    public static final double MANUFACTURING_PRICE_PER_VEHICLE = 500.19;
+    public static final double MANUFACTURING_PRICE_PER_VEHICLE = 500.19; // static field are public
     public static final double PRICE_PER_FUEL_CELL = 2.15;
 
     //Snake casing, camel casing
@@ -80,7 +83,7 @@ public class VehicleOrder {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("WELCOME TO HAYLO MANUFATURING");
+        sb.append("WELCOME TO HAYLO MANUFATURING\n");
 
         sb.append("Customer Name: ").append(firstName).append(" ").append(lastName).append("\n");
         sb.append("Customer Phone: ").append(phone).append("\n\n");
