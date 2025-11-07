@@ -20,7 +20,8 @@ public class VehicleOrder {
     //Snake casing, camel casing
     public static final double FUEL_CELLS_PER_TANK = 12;
 
-    public static final double TAX_RATE = 0.0725; // 7.25%
+    public static final double TAX_RATE = 0.0725;
+
 
     public VehicleOrder(String firstName, String lastName, String phone,
                         int numberOfVehicles, int numberOfTanksPerVehicle){
@@ -42,16 +43,15 @@ public class VehicleOrder {
     }
 
 
-
-    public double computeSubTotal() {
+    public double computeSubTotal(){
         return computeManufacturingCost() + computeFuelTankCost();
     }
 
-    public double computeTax() {
+    public double computeTax(){
         return computeSubTotal() * TAX_RATE;
     }
 
-    public double computeTotalCost(){
+        public double computeTotalCost(){
         return computeSubTotal() + computeTax();
     }
 
@@ -80,16 +80,17 @@ public class VehicleOrder {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("WELCOME TO HAYLO MANUFACTURING").append("\n");
-        sb.append("Customer: ").append(firstName).append(" ").append(lastName).append("\n");
-        sb.append("Phone: ").append(phone).append("\n\n");
+        sb.append("WELCOME TO HAYLO MANUFATURING");
+
+        sb.append("Customer Name: ").append(firstName).append(" ").append(lastName).append("\n");
+        sb.append("Customer Phone: ").append(phone).append("\n\n");
         sb.append("Number of vehicles: ").append(numberOfVehicles).append("\n");
-        sb.append("Tanks per vehicle: ").append(numberOfTanksPerVehicle).append("\n");
+        sb.append("Number of Tanks: ").append(numberOfTanksPerVehicle).append("\n");
         sb.append("Fuel cell per tank: ").append(FUEL_CELLS_PER_TANK).append("\n\n");
         sb.append("Manufacturing cost: ").append(cf.format(computeManufacturingCost())).append("\n");
         sb.append("Fuel tank cost: ").append(cf.format(computeFuelTankCost())).append("\n");
-     //   sb.append("Total cost: ").append(cf.format(computeTotalCost())).append("\n");
-        sb.append("Subtotal: ").append(cf.format(computeSubTotal())).append("\n");
+       // sb.append("Total cost: ").append(cf.format(computeTotalCost())).append("\n");
+        sb.append("SubTotal: ").append(cf.format(computeSubTotal())).append("\n");
         sb.append("Tax (7.25%): ").append(cf.format(computeTax())).append("\n");
         sb.append("Total: ").append(cf.format(computeTotalCost())).append("\n");
 
